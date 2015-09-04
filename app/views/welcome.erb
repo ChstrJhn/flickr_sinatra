@@ -1,0 +1,8 @@
+<h1>Highlighted Photos</h1>
+
+<%unless @all_photos.nil?%>
+  <%@all_photos.each do |photo|%>
+  <p><img src=<%=photo.file_url(:thumb)%>></p>
+  <p><%=photo.description%></p>
+  <%end%>
+<%end%>

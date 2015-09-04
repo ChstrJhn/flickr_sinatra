@@ -1,0 +1,7 @@
+<% unless @all_albums.nil? %>  
+  <ol class="sortable_albums">
+  <%@all_albums.each do |album| %>
+  <div class="album_title"><li><%=album.title%><a href="/my_albums/<%=album.id%>"><img src=<%=album.photos.first.file%>></a></li></div>
+  <%end%>
+  </ol>
+<%end%>

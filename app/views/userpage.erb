@@ -1,0 +1,26 @@
+<% if current_user%>
+<h1>Welcome <%=current_user.name%>!</h1>
+<%end%>
+<h4>Want to upload a new photo?</h4>
+<div class="form">
+<form action="/upload" enctype="multipart/form-data" method="POST">
+	<input type="file" name="new_photo[file]" placeholder="choose a photo to upload">
+	<textarea name="new_photo[description]" rows="3" cols="30" placeholder="Describe your new photo!"></textarea>
+	<%unless @all_albums.nil?%>
+	  <p>Choose an album to add your photo to:</p>
+	  <select name="album[id]">
+	  <%@all_albums.each do |album|%>
+	  	<option value="<%=album.id%>"><%=album.title%></option>
+	  <%end%>
+	  </select>
+	<%end%>
+	<p><input type="submit" value="Upload Now"></p>
+</form>
+
+<h4>Want to create a new album?</h4>
+<div class="form">
+<form action="/new_album" enctype="multipart/form-data" method="POST">
+	<input type="text" name="new_album[title]" placeholder="give your album a title"><br>
+	<textarea name="new_album[description]" rows="3" cols="30" placeholder="What's your album about?"></textarea>
+	<p><input type="submit" value="Create Album"></p>
+</form>
