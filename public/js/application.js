@@ -12,15 +12,28 @@ $(document).ready(function() {
   var $slideContainer = $slideShow.find(".slides");
   var $slides = $slideContainer.find(".slide");
 
-setInterval(function(){
-  $slideContainer.animate({'margin-left': '-=' +width}, animationSpeed, function(){
-     currentSlide++;
-     if (currentSlide === $slides.length) {
-     	currentSlide = 1;
+  var interval;
+
+  function startSlider(){
+  interval = setInterval(function(){
+    $slideContainer.animate({'margin-left': '-=' +width}, animationSpeed, function(){
+      currentSlide++;
+      if (currentSlide === $slides.length) {
+        currentSlide = 1;
      	$slideContainer.css('margin-left', 0);
      }
 
   });
 }, pause);
+
+}
+
+function stopSlider() {
+	clearInterval(interval);
+}
+
+$slideShow.on('mouseenter', stopSlider).on('mouseleave', startSlider);
+
+startSlider();
 
 });
