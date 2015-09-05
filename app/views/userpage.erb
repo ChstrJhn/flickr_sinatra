@@ -1,17 +1,22 @@
 <% if current_user%>
 <h1>Welcome <%=current_user.name%>!</h1>
 <%end%>
-<h4>Want to upload a new photo?</h4>
+
 <div class="form">
+<h4>Want to upload a new photo?</h4>
 <form action="/upload" enctype="multipart/form-data" method="POST">
-	<input type="file" name="new_photo[file]" placeholder="choose a photo to upload">
+	<input style="margin-left:150px;" type="file" name="new_photo[file]"><br>
 	<textarea name="new_photo[description]" rows="3" cols="30" placeholder="Describe your new photo!"></textarea>
 	<%unless @all_albums.nil?%>
 	  <p>Choose an album to add your photo to:</p>
-	  <select name="album[id]">
-	  <%@all_albums.each do |album|%>
+	  <% unless @all_albums.nil? %>
+	    <select name="album[id]">
+	    <%@all_albums.each do |album|%>
 	  	<option value="<%=album.id%>"><%=album.title%></option>
-	  <%end%>
+	    <% end %>
+	    <% else %>
+	    <p>you don't have any albums yet...make one below!</p>
+	  <% end %>
 	  </select>
 	<%end%>
 	<p><input type="submit" value="Upload Now"></p>

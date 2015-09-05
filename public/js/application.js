@@ -1,7 +1,26 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+
+  //configuration
+  var width = 720;
+  var animationSpeed = 1000;
+  var pause = 2000;
+  var currentSlide = 1;
+
+  //cache DOM
+  var $slideShow = $("#slideshow");
+  var $slideContainer = $slideShow.find(".slides");
+  var $slides = $slideContainer.find(".slide");
+
+setInterval(function(){
+  $slideContainer.animate({'margin-left': '-=' +width}, animationSpeed, function(){
+     currentSlide++;
+     if (currentSlide === $slides.length) {
+     	currentSlide = 1;
+     	$slideContainer.css('margin-left', 0);
+     }
+
+  });
+}, pause);
+
 });

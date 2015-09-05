@@ -4,7 +4,7 @@ class Uploader < CarrierWave::Uploader::Base
   process :resize_to_fit => [600, 600]
   
   version :thumb do
-    process :resize_to_limit => [100, 100]
+    process :resize_to_limit => [300, 300]
   end
 
   storage :file

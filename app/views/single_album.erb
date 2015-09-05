@@ -1,6 +1,12 @@
 <h1><%=@album.title%></h1>
 <h4><%=@album.description%></h4>
-<ul class="slideshow">
-<%@album.photos.each do |photo|%>
-<li><img src=<%=photo.file_url%>><br><%=photo.description%></li>
-<%end%>
+
+<div id="slideshow">
+  <ul class="slides">
+    <%@album.photos.each do |photo|%>
+    <li class="slide"><img src=<%=photo.file_url%>></li>
+  <%end%>
+    <li class="slide"><img src=<%=@album.photos.first.file_url%>></li>
+   </ul>
+</div>
+

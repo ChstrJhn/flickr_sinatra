@@ -1,8 +1,9 @@
 <h1>Highlighted Photos</h1>
 
 <%unless @all_photos.nil?%>
-  <%@all_photos.each do |photo|%>
-  <p><img src=<%=photo.file_url(:thumb)%>></p>
-  <p><%=photo.description%></p>
+<ol class="highlighted_photos">
+  <%sorted = @all_photos.sort_by {|photo| -photo.created_at.day}%>
+  <%sorted.each do |photo|%>
+ <li><img src=<%=photo.file_url(:thumb)%>></li>
   <%end%>
 <%end%>
