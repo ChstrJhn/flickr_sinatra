@@ -29,7 +29,8 @@ get '/signup' do
 end
 
 get '/userpage' do
-	@all_albums = Album.all
+	@user = current_user
+	@all_albums = @user.albums
 	erb :userpage
 end
 

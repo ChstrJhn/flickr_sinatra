@@ -5,7 +5,7 @@ post '/upload' do
     @new_photo = Photo.create(@photo_details)
     @album.photos << @new_photo
     @user.photos << @new_photo
-	redirect '/'
+	redirect '/my_albums'
 end
 
 delete '/my_albums/:album_id/photo/:photo_id/delete' do

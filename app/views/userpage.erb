@@ -7,17 +7,15 @@
 <form action="/upload" enctype="multipart/form-data" method="POST">
 	<input style="margin-left:150px;" type="file" name="new_photo[file]"><br>
 	<textarea name="new_photo[description]" rows="3" cols="30" placeholder="Describe your new photo!"></textarea>
-	<%unless @all_albums.nil?%>
 	  <p>Choose an album to add your photo to:</p>
-	  <% unless @all_albums.nil? %>
+	  <% unless @all_albums.empty? %>
 	    <select name="album[id]">
 	    <%@all_albums.each do |album|%>
 	  	<option value="<%=album.id%>"><%=album.title%></option>
 	    <% end %>
-	    <% else %>
-	    <p>you don't have any albums yet...make one below!</p>
-	  <% end %>
 	  </select>
+	   <% else %>
+	    <p><b>you don't have any albums yet...make one below!</b></p>
 	<%end%>
 	<p><input type="submit" value="Upload Now"></p>
 </form>
@@ -26,6 +24,6 @@
 <div class="form">
 <form action="/new_album" enctype="multipart/form-data" method="POST">
 	<input type="text" name="new_album[title]" placeholder="give your album a title"><br>
-	<textarea name="new_album[description]" rows="3" cols="30" placeholder="What's your album about?"></textarea>
+	<textarea name="new_album[description]" rows="3" cols="30" placeholder="Tell us what's your album about!"></textarea>
 	<p><input type="submit" value="Create Album"></p>
 </form>

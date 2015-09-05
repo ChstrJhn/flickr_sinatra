@@ -1,6 +1,4 @@
-$(document).ready(function() {
-
-
+function albumSlideshow(){
   //configuration
   var width = 720;
   var animationSpeed = 1000;
@@ -35,5 +33,13 @@ function stopSlider() {
 $slideShow.on('mouseenter', stopSlider).on('mouseleave', startSlider);
 
 startSlider();
+
+}
+
+$(document).ready(function() {
+
+if($("body").hasClass("album_slideshow")){
+	albumSlideshow();
+}
 
 });
